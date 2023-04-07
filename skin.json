@@ -1,23 +1,23 @@
 {
-	"name": "Example",
+	"name": "Folc",
 	"version": "1.0.0",
 	"author": [
 		"..."
 	],
-	"url": "https://www.mediawiki.org/wiki/Skin:Example",
-	"descriptionmsg": "example-skin-desc",
-	"namemsg": "skinname-example",
+	"url": "https://www.mediawiki.org/wiki/Skin:Folc",
+	"descriptionmsg": "folc-skin-desc",
+	"namemsg": "skinname-folc",
 	"license-name": "CC0-1.0",
 	"type": "skin",
 	"requires": {
 		"MediaWiki": ">= 1.38.0"
 	},
 	"ValidSkinNames": {
-		"example": {
+		"folc": {
 			"class": "SkinMustache",
 			"args": [
 				{
-					"name": "example",
+					"name": "folc",
 					"responsive": true,
 					"messages": [
 						"example-no-categories",
@@ -30,10 +30,10 @@
 					"styles": [
 						"mediawiki.ui.icon",
 						"mediawiki.ui.button",
-						"skins.example.styles"
+						"skins.folc.styles"
 					],
 					"scripts": [
-						"skins.example"
+						"skins.folc"
 					]
 				}
 			]
@@ -45,7 +45,7 @@
 		]
 	},
 	"ResourceModules": {
-		"skins.example.styles": {
+		"skins.folc.styles": {
 			"class": "ResourceLoaderSkinModule",
 			"features": {
 				"normalize": true,
@@ -63,22 +63,24 @@
 				"mobile"
 			],
 			"styles": [
-				"resources/skin.less"
+				"resources/main.css"
 			]
 		},
-		"skins.example": {
+		"skins.folc": {
 			"targets": [
 				"desktop",
 				"mobile"
 			],
-			"packageFiles": [
-				"resources/skin.js"
+			"scripts": [
+				"resources/main.js",
+				"resources/globals.js",
+				"resources/bootstrap.js"
 			]
 		}
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
-		"remoteSkinPath": "Example"
+		"remoteSkinPath": "Folc"
 	},
 	"ResourceModuleSkinStyles": {
 		"example": {
