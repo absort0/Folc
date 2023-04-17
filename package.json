@@ -1,5 +1,5 @@
 {
-	"name": "Example",
+	"name": "Folc",
 	"private": true,
 	"scripts": {
 		"test": "npm -s run lint",
