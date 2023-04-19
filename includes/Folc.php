@@ -21,13 +21,13 @@ class Folc extends SkinMustache {
         if ( in_array( $wgTitle->getFullText(), ['Dance', 'Art', 'Belief','Craftsmanship and Practices', 'Entertainment and Recreation', 'Food', 'Music', 'Ritual', 'Verbal Arts and Literature' ] ) ) {
             $data['category_page'] = true;
         } else if ( !$wgTitle->isMainPage() && $wgTitle->getNamespace() == 0 ) {
-            $cargo_table_name = CargoUtils::getTableNameForTemplate( 'PostForm' );
+            $cargo_table_name = \CargoUtils::getTableNameForTemplate( \Title::newFromText( 'Template:PostForm' ) );
 
             $lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
             $dbr = $lb->getConnectionRef( DB_REPLICA );
             $res = $dbr->newSelectQueryBuilder()
                 ->select( '*' )
-                ->from( $cargo_table_name )
+                ->from( $cargo_table_name[0] )
                 ->where( [ '_pageID' => $wgTitle->getId() ] )
                 ->caller( __METHOD__ )
                 ->fetchResultSet();
