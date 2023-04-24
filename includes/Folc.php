@@ -37,7 +37,7 @@ class Folc extends SkinMustache {
             foreach( $res as $row ) {
                 $data['tags'] = explode( ',', $row->Tags__full );
                 $data['countries'] = explode( ',', $row->Country__full );
-                $data['regions'] = explode( ',', $row->Region_full );
+                $data['regions'] = explode( ',', $row->Region__full );
                 $data['sdg'] = explode( ',', $row->SDG__full );
                 $data['img'] = $row->Media_URL;
                 $subjects = explode( ',', $row->Subject__full );
