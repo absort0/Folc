@@ -42,8 +42,8 @@ class Folc extends SkinMustache {
 
                 foreach( $subjects as $subject ) {
                     $data['subjects'][] = [
-                        'subject_name_lower' => strtolower( $subject ),
-                        'subject_name' => $subject
+                        'subject_name_lower' => trim( strtolower( $subject ) ),
+                        'subject_name' => trim( ucwords( $subject ) )
                     ];
                 }
             }
