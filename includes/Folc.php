@@ -35,18 +35,27 @@ class Folc extends SkinMustache {
 
             $data['article_page'] = true;
             foreach( $res as $row ) {
-                $data['tags'] = explode( ',', $row->Tags__full );
-                $data['countries'] = explode( ',', $row->Country__full );
-                $data['regions'] = explode( ',', $row->Region__full );
+                if ( !empty( $row->Tags__full ) ) {
+                    $data['tags'] = explode( ',', $row->Tags__full );
+                }
+                if ( !empty( $row->Country__full ) ) {
+                    $data['countries'] = explode( ',', $row->Country__full );
+                }
+                if ( !empty( $row->Region__full ) ) {
+                    $data['regions'] = explode( ',', $row->Region__full );
+                }
                 $data['sdg'] = explode( ',', $row->SDG__full );
                 $data['img'] = $row->Media_URL;
-                $subjects = explode( ',', $row->Subject__full );
 
-                foreach( $subjects as $subject ) {
-                    $data['subjects'][] = [
-                        'subject_name_lower' => explode( ' ', trim( strtolower( $subject ) ) )[0],
-                        'subject_name' => trim( ucwords( $subject ) )
-                    ];
+                if ( !empty( $row->Subject__full ) ) {
+                    $subjects = explode( ',', $row->Subject__full );
+
+                    foreach( $subjects as $subject ) {
+                        $data['subjects'][] = [
+                            'subject_name_lower' => explode( ' ', trim( strtolower( $subject ) ) )[0],
+                            'subject_name' => trim( ucwords( $subject ) )
+                        ];
+                    }
                 }
             }
         }
