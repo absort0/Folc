@@ -45,7 +45,7 @@ class Folc extends SkinMustache {
                     $data['regions'] = explode( ',', $row->Region__full );
                 }
                 $data['sdg'] = explode( ',', $row->SDG__full );
-                $data['img'] = $row->Media_URL;
+                $data['img'] = $row->File__full;
 
                 if ( !empty( $row->Subject__full ) ) {
                     $subjects = explode( ',', $row->Subject__full );
