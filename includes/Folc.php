@@ -124,6 +124,8 @@ class Folc extends SkinMustache {
                     }
                 }
             }
+        } else {
+            $data['other_page'] = true;
         }
         return $data;
     }
