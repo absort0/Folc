@@ -21,7 +21,7 @@ class Folc extends SkinMustache {
 
         $data['country_page'] = false;
 
-        $categories = ['Dance', 'Art', 'Belief','Craftsmanship and Practices', 'Entertainment and Recreation', 'Food', 'Music', 'Ritual', 'Verbal Arts and Literature' ];
+        $categories = ['Dance', 'Art', 'Belief','Craftmanship and Practices', 'Entertainment and Recreation', 'Food', 'Music', 'Ritual', 'Verbal Arts and Literature' ];
 
         $lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
         $dbr = $lb->getConnectionRef( DB_REPLICA );
