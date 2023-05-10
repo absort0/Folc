@@ -13,13 +13,21 @@ class Folc extends SkinMustache {
      * which can be rendered in skin.mustache using {{{html-myskin-hello-world}}}
      */
     public function getTemplateData() {
-        global $wgTitle;
+        global $wgTitle, $wgRequest;
 
         $data = parent::getTemplateData();
         $data['pagetitle'] = $wgTitle->getFullText(); // or $this->msg('msg-key')->parse();
         $data['pagetitle_smallcase'] = strtolower( $wgTitle->getFullText() );
 
         $data['country_page'] = false;
+
+        if ( $wgRequest->getText( 'action' ) == "formedit" ) {
+            $data['edit_tab'] = 'active';
+        } else if ( $wgRequest->getText( 'action' ) == "history" ) {
+            $data['history_tab'] = 'active';
+        } else {
+            $data['read_tab'] = 'active';
+        }
 
         $categories = ['Dance', 'Art', 'Belief','Craftmanship and Practices', 'Entertainment and Recreation', 'Food', 'Music', 'Ritual', 'Verbal Arts and Literature' ];
 
