@@ -30,12 +30,8 @@ class Folc extends SkinMustache {
             ->caller( __METHOD__ )
             ->fetchResultSet();
 
-        $countries_list = [];
         foreach( $countries as $country ){
-            $countries_list[$country->Continent][] = $country->Country;
-        }
-        foreach( $countries_list as $continent => $countries ) {
-            $data[$continent] = explode( ',', $countries );
+            $data[$country->Continent][] = $country->Country;
         }
 
 
