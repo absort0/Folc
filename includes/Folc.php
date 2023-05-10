@@ -60,7 +60,7 @@ class Folc extends SkinMustache {
                     ->fetchResultSet();
 
                 foreach( $category_pages as $page ) {
-                    $data[$category . '_filtered'][] = Title::newFromID( $page->_pageID )->getFullText();
+                    $data[$category . '_filtered'][] = \Title::newFromID( $page->_pageID )->getFullText();
                 }
             }
         } else if ( in_array( $wgTitle->getFullText(), $categories ) ) {
