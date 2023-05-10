@@ -19,6 +19,9 @@ class Folc extends SkinMustache {
         $data['pagetitle'] = $wgTitle->getFullText(); // or $this->msg('msg-key')->parse();
         $data['pagetitle_smallcase'] = strtolower( $wgTitle->getFullText() );
 
+        $data['country_page'] = false;
+
+        $categories = ['Dance', 'Art', 'Belief','Craftsmanship and Practices', 'Entertainment and Recreation', 'Food', 'Music', 'Ritual', 'Verbal Arts and Literature' ];
 
         $lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
         $dbr = $lb->getConnectionRef( DB_REPLICA );
@@ -47,8 +50,20 @@ class Folc extends SkinMustache {
 
 
         if ( $data['country_page'] ) {
+            foreach( $categories as $category ){
 
-        } else if ( in_array( $wgTitle->getFullText(), ['Dance', 'Art', 'Belief','Craftsmanship and Practices', 'Entertainment and Recreation', 'Food', 'Music', 'Ritual', 'Verbal Arts and Literature' ] ) ) {
+                 $category_pages = $dbr->newSelectQueryBuilder()       
+                    ->select( '*' )
+                    ->from( 'cargo__' . 'Articles' )
+                    ->where(['Country__full LIKE "' . $wgTitle->getFullText() . '"', 'Subject__full LIKE "' . $category . '"'] )
+                    ->caller( __METHOD__ )       
+                    ->fetchResultSet();
+
+                foreach( $category_pages as $page ) {
+                    $data[$category . '_filtered'][] = Title::newFromID( $page->_pageID )->getFullText();
+                }
+            }
+        } else if ( in_array( $wgTitle->getFullText(), $categories ) ) {
             $data['category_page'] = true;
 
             foreach( $countries as $country ){
