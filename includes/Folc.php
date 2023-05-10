@@ -38,7 +38,7 @@ class Folc extends SkinMustache {
              $country_pages = $dbr->newSelectQueryBuilder()       
                 ->select( '*' )
                 ->from( 'cargo__' . 'Articles' )
-                ->where(['Country__full LIKE "' . $country->Country . '"'] )
+                ->where(['Country__full LIKE "%' . $country->Country . '%"'] )
                 ->caller( __METHOD__ )       
                 ->fetchResultSet();
 
@@ -55,7 +55,7 @@ class Folc extends SkinMustache {
                  $category_pages = $dbr->newSelectQueryBuilder()       
                     ->select( '*' )
                     ->from( 'cargo__' . 'Articles' )
-                    ->where(['Country__full LIKE "' . $wgTitle->getFullText() . '"', 'Subject__full LIKE "' . $category . '"'] )
+                    ->where(['Country__full LIKE "%' . $wgTitle->getFullText() . '%"', 'Subject__full LIKE "%' . $category . '%"'] )
                     ->caller( __METHOD__ )       
                     ->fetchResultSet();
 
@@ -71,7 +71,7 @@ class Folc extends SkinMustache {
                  $country_pages = $dbr->newSelectQueryBuilder()       
                     ->select( '*' )
                     ->from( 'cargo__' . 'Articles' )
-                    ->where(['Country__full LIKE "' . $country->Country . '"', 'Subject__full LIKE "' . $wgTitle->getFullText() . '"'] )
+                    ->where(['Country__full LIKE "%' . $country->Country . '%"', 'Subject__full LIKE "%' . $wgTitle->getFullText() . '%"'] )
                     ->caller( __METHOD__ )       
                     ->fetchResultSet();
 
