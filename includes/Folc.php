@@ -101,7 +101,7 @@ class Folc extends SkinMustache {
                 }
                 $data['sdg'] = explode( ',', $row->SDG__full );
                 if ( !empty( $row->File ) ) {
-                    $file = \wfFindFile( $row->File );
+                    $file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $row->File );
                     $data['img'] = $file->getFullUrl();
                 }
 
