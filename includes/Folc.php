@@ -19,6 +19,10 @@ class Folc extends SkinMustache {
         $data['pagetitle'] = $wgTitle->getFullText(); // or $this->msg('msg-key')->parse();
         $data['pagetitle_smallcase'] = strtolower( $wgTitle->getFullText() );
 
+
+        $lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
+        $dbr = $lb->getConnectionRef( DB_REPLICA );
+
         $countries = $dbr->newSelectQueryBuilder()
             ->select( '*' )
             ->from( 'cargo__' . 'Country' )
@@ -40,8 +44,6 @@ class Folc extends SkinMustache {
         } else if ( !$wgTitle->isMainPage() && $wgTitle->getNamespace() == 0 ) {
 
 
-            $lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
-            $dbr = $lb->getConnectionRef( DB_REPLICA );
             $res = $dbr->newSelectQueryBuilder()
                 ->select( '*' )
                 ->from( 'cargo__' . 'Articles' )
