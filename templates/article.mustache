@@ -57,7 +57,7 @@
                     </figure>
                     <div class="px-1 p-md-3">
                         <div><span class="text-gray">Nation:</span> {{#countries}}<a href="{{.}}">{{.}}</a>{{^-last}}, {{/-last}}{{/countries}} </div>
-                        <div><span class="text-gray">Region:</span> {{#regions}}<li><a href="{{.}}">{{.}}</a></li>{{/regions}}</div>
+                        <div><span class="text-gray">Region:</span> {{#regions}}<a href="{{.}}">{{.}}</a>{{^-last}}, {{/-last}}{{/regions}}</div>
                     </div>
                     <hr>
                     <div class="px-1 p-md-3">
