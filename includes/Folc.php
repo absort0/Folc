@@ -40,11 +40,29 @@ class Folc extends SkinMustache {
                 ->fetchResultSet();
 
             $data[$country->Continent][] = [ 'country' => $country->Country, 'count' => $country_pages->numRows() ];
+            if ( $wgTitle->getFullText() == $country->Country ) {
+                $data['country_page'] = true;
+            }
         }
 
 
-        if ( in_array( $wgTitle->getFullText(), ['Dance', 'Art', 'Belief','Craftsmanship and Practices', 'Entertainment and Recreation', 'Food', 'Music', 'Ritual', 'Verbal Arts and Literature' ] ) ) {
+        if ( $data['country_page'] ) {
+
+        } else if ( in_array( $wgTitle->getFullText(), ['Dance', 'Art', 'Belief','Craftsmanship and Practices', 'Entertainment and Recreation', 'Food', 'Music', 'Ritual', 'Verbal Arts and Literature' ] ) ) {
             $data['category_page'] = true;
+
+            foreach( $countries as $country ){
+
+                 $country_pages = $dbr->newSelectQueryBuilder()       
+                    ->select( '*' )
+                    ->from( 'cargo__' . 'Articles' )
+                    ->where(['Country__full LIKE "' . $country->Country . '"', 'Subject__full LIKE "' . $wgTitle->getFullText() . '"'] )
+                    ->caller( __METHOD__ )       
+                    ->fetchResultSet();
+
+                $data[$country->Continent . '_filtered'][] = [ 'country' => $country->Country, 'count' => $country_pages->numRows() ];
+            }
+
         } else if ( !$wgTitle->isMainPage() && $wgTitle->getNamespace() == 0 ) {
 
 
