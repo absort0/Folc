@@ -18,6 +18,23 @@ class Folc extends SkinMustache {
         $data = parent::getTemplateData();
         $data['pagetitle'] = $wgTitle->getFullText(); // or $this->msg('msg-key')->parse();
         $data['pagetitle_smallcase'] = strtolower( $wgTitle->getFullText() );
+
+        $countries = $dbr->newSelectQueryBuilder()
+            ->select( '*' )
+            ->from( 'cargo__' . 'Country' )
+            ->where(['_pageID > 0'] )
+            ->caller( __METHOD__ )
+            ->fetchResultSet();
+
+        $countries_list = [];
+        foreach( $countries as $country ){
+            $countries_list[$country->Continent][] = $country->Country;
+        }
+        foreach( $countries_list as $continent => $countries ) {
+            $data[$continent] = explode( ',', $countries );
+        }
+
+
         if ( in_array( $wgTitle->getFullText(), ['Dance', 'Art', 'Belief','Craftsmanship and Practices', 'Entertainment and Recreation', 'Food', 'Music', 'Ritual', 'Verbal Arts and Literature' ] ) ) {
             $data['category_page'] = true;
         } else if ( !$wgTitle->isMainPage() && $wgTitle->getNamespace() == 0 ) {
@@ -32,7 +49,6 @@ class Folc extends SkinMustache {
                 ->caller( __METHOD__ )
                 ->fetchResultSet();
 
-
             $data['article_page'] = true;
             foreach( $res as $row ) {
                 if ( !empty( $row->Tags__full ) ) {
@@ -45,7 +61,10 @@ class Folc extends SkinMustache {
                     $data['regions'] = explode( ',', $row->Region__full );
                 }
                 $data['sdg'] = explode( ',', $row->SDG__full );
-                $data['img'] = $row->File__full;
+                if ( !empty( $row->File ) ) {
+                    $file = \wfFindFile( $row->File );
+                    $data['img'] = $file->getFullUrl();
+                }
 
                 if ( !empty( $row->Subject__full ) ) {
                     $subjects = explode( ',', $row->Subject__full );
