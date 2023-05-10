@@ -56,7 +56,7 @@
                         <figcaption class="figure-caption text-left bg-light-gray px-1 px-md-3 py-1">{{img-caption}}</figcaption>
                     </figure>
                     <div class="px-1 p-md-3">
-                        <div><span class="text-gray">Nation:</span> {{#countries}}<li><a href="{{.}}">{{.}}</a></li>{{/countries}} </div>
+                        <div><span class="text-gray">Nation:</span> {{#countries}}<a href="{{.}}">{{.}}</a>{{^-last}}, {{/-last}}{{/countries}} </div>
                         <div><span class="text-gray">Region:</span> {{#regions}}<li><a href="{{.}}">{{.}}</a></li>{{/regions}}</div>
                     </div>
                     <hr>
