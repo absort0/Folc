@@ -31,7 +31,15 @@ class Folc extends SkinMustache {
             ->fetchResultSet();
 
         foreach( $countries as $country ){
-            $data[$country->Continent][] = $country->Country;
+
+             $country_pages = $dbr->newSelectQueryBuilder()       
+                ->select( '*' )
+                ->from( 'cargo__' . 'Articles' )
+                ->where(['Country__full LIKE "' . $country->Country . '"'] )
+                ->caller( __METHOD__ )       
+                ->fetchResultSet();
+
+            $data[$country->Continent][] = [ 'country' => $country->Country, 'count' => $country_pages->numRows() ];
         }
 
 
