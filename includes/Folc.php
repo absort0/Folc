@@ -87,6 +87,7 @@ class Folc extends SkinMustache {
             }
 
         } else if ( !$wgTitle->isMainPage() && in_array( $wgTitle->getNamespace(), [ 0, 1 ] ) ) {
+            $data['pagetitle'] = $wgTitle->getText(); // or $this->msg('msg-key')->parse();
 
 
             $res = $dbr->newSelectQueryBuilder()
