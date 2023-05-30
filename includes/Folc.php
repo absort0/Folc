@@ -29,7 +29,7 @@ class Folc extends SkinMustache {
             $data['read_tab'] = 'active';
         }
 
-        $categories = ['Dance', 'Art', 'Belief','Craftmanship', 'Entertainment and Recreation', 'Food', 'Music', 'Ritual', 'Verbal Arts and Literature' ];
+        $categories = ['Dance', 'Art', 'Belief','Craftmanship', 'Entertainment and Recreation', 'Foodways', 'Music', 'Ritual', 'Verbal Arts and Literature' ];
 
         $lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
         $dbr = $lb->getConnectionRef( DB_REPLICA );
