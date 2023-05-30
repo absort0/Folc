@@ -86,7 +86,7 @@ class Folc extends SkinMustache {
                 $data[$country->Continent . '_filtered'][] = [ 'country' => $country->Country, 'count' => $country_pages->numRows() ];
             }
 
-        } else if ( !$wgTitle->isMainPage() && $wgTitle->getNamespace() == 0 ) {
+        } else if ( !$wgTitle->isMainPage() && in_array( $wgTitle->getNamespace(), [ 0, 1 ] ) ) {
 
 
             $res = $dbr->newSelectQueryBuilder()
