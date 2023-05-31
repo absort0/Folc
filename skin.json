@@ -63,6 +63,7 @@
 				"mobile"
 			],
 			"styles": [
+				"resources/override_defaults.css",
 				"resources/main.css"
 			]
 		},
