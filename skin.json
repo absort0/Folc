@@ -49,7 +49,7 @@
 			"class": "ResourceLoaderSkinModule",
 			"features": {
 				"normalize": true,
-				"elements": true,
+				"elements": false,
 				"content-tables": true,
 				"content-links": false,
 				"content-media": false,
