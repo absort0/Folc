@@ -25,6 +25,8 @@ class Folc extends SkinMustache {
             $data['edit_tab'] = 'active';
         } else if ( $wgRequest->getText( 'action' ) == "history" ) {
             $data['history_tab'] = 'active';
+        } else if ( $wgTitle->getNamespace() == 1 ) {
+            $data['discussion_tab'] = 'active';
         } else {
             $data['read_tab'] = 'active';
         }
