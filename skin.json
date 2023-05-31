@@ -56,14 +56,13 @@
 				"content-links-external": false,
 				"interface-message-box": true,
 				"interface-category": false,
-				"toc": true
+				"toc": false
 			},
 			"targets": [
 				"desktop",
 				"mobile"
 			],
 			"styles": [
-				"resources/override_defaults.css",
 				"resources/main.css"
 			]
 		},
