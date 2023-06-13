@@ -21,7 +21,7 @@ class Folc extends SkinMustache {
 
         $data['country_page'] = false;
         $data['region_page'] = false;
-        $country = "";
+        $country_name = "";
 
         if ( $wgRequest->getText( 'action' ) == "formedit" ) {
             $data['edit_tab'] = 'active';
@@ -67,8 +67,8 @@ class Folc extends SkinMustache {
             if ( in_array( $wgTitle->getFullText(), $regions ) ) {
                 $data['region_page'] = true;
                 $data['regions'] = $regions;
-                $country = $country->Country;
-                $data['country'] = $country;
+                $country_name = $country->Country;
+                $data['country'] = $country_name;
             }
         }
 
@@ -79,7 +79,7 @@ class Folc extends SkinMustache {
                  $category_pages = $dbr->newSelectQueryBuilder()       
                     ->select( '*' )
                     ->from( 'cargo__' . 'Articles' )
-                    ->where(['Country__full LIKE "%' . $country . '%"', 'Subject__full LIKE "%' . $category . '%"', 'Subject__full LIKE "%' . $wgTitle->getFullText() . '%"'] )
+                    ->where(['Country__full LIKE "%' . $country_name . '%"', 'Subject__full LIKE "%' . $category . '%"', 'Subject__full LIKE "%' . $wgTitle->getFullText() . '%"'] )
                     ->caller( __METHOD__ )       
                     ->fetchResultSet();
 
