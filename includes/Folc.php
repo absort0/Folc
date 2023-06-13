@@ -68,8 +68,8 @@ class Folc extends SkinMustache {
                 ->caller( __METHOD__ )
                 ->fetchResultSet();
             foreach( $res as $row ) {
-                if ( !empty( $row->Region__full ) ) {
-                    $data['regions'] = explode( ',', $row->Region__full );
+                if ( !empty( $row->Regions__full ) ) {
+                    $data['regions'] = explode( ',', $row->Regions__full );
                 }
             }
             foreach( $categories as $category ){
