@@ -20,6 +20,8 @@ class Folc extends SkinMustache {
         $data['pagetitle_smallcase'] = strtolower( $wgTitle->getFullText() );
 
         $data['country_page'] = false;
+        $data['region_page'] = false;
+        $country = "";
 
         if ( $wgRequest->getText( 'action' ) == "formedit" ) {
             $data['edit_tab'] = 'active';
@@ -53,25 +55,39 @@ class Folc extends SkinMustache {
                 ->fetchResultSet();
 
             $data[$country->Continent][] = [ 'country' => $country->Country, 'count' => $country_pages->numRows() ];
+
+            $regions = [];
+            if ( !empty( $country->Regions__full ) ) {
+                $regions = explode( ',', $country->Regions__full );
+            }
             if ( $wgTitle->getFullText() == $country->Country ) {
                 $data['country_page'] = true;
+                $data['regions'] = $regions;
+            }
+            if ( in_array( $wgTitle->getFullText(), $regions ) {
+                $data['region_page'] = true;
+                $data['regions'] = $regions;
+                $country = $country->Country;
+                $data['country'] = $country;
             }
         }
 
 
-        if ( $data['country_page'] ) {
-            $regions = [];
-            $res = $dbr->newSelectQueryBuilder()
-                ->select( '*' )
-                ->from( 'cargo__' . 'Country' )
-                ->where(['Country LIKE "%' . $wgTitle->getFullText() . '%"'] )
-                ->caller( __METHOD__ )
-                ->fetchResultSet();
-            foreach( $res as $row ) {
-                if ( !empty( $row->Regions__full ) ) {
-                    $data['regions'] = explode( ',', $row->Regions__full );
+        if ( $data['region_page'] ) {
+            foreach( $categories as $category ){
+
+                 $category_pages = $dbr->newSelectQueryBuilder()       
+                    ->select( '*' )
+                    ->from( 'cargo__' . 'Articles' )
+                    ->where(['Country__full LIKE "%' . $country . '%"', 'Subject__full LIKE "%' . $category . '%"', 'Subject__full LIKE "%' . $wgTitle->getFullText() . '%"'] )
+                    ->caller( __METHOD__ )       
+                    ->fetchResultSet();
+
+                foreach( $category_pages as $page ) {
+                    $data[$category . '_filtered'][] = \Title::newFromID( $page->_pageID )->getFullText();
                 }
             }
+        } if ( $data['country_page'] ) {
             foreach( $categories as $category ){
 
                  $category_pages = $dbr->newSelectQueryBuilder()       

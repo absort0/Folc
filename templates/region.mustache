@@ -1,0 +1,118 @@
+<div class="main-content">
+    <div class="country-header country-header--region border-bottom">
+                    <div class="container text-center d-flex flex-column align-items-center justify-content-center">
+                        <h4 class="text-gray mt-0 mt-md-2">{{country}}</h4>
+                        <h1>{{pagetitle}}</h1>
+                        <div class="col-11 col-md-5 col-lg-4 col-xl-3 pb-lg-2 d-none d-lg-block">
+                            <select class="select-region custom-select text-uppercase text-gray mt-2" aria-label="Default select example">
+                                <option selected="">Filter by Regions/States</option>
+                                {{#regions}}<option value="{{.}}">{{.}}</option>{{/regions}}
+                            </select>
+                        </div>
+                        <a class="text-uppercase btn text-white bg-gray d-inline-flex align-items-center" href="{{country}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="svg ml-n1" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
+    </svg>
+                Back to {{country}}
+            </a>
+        </div>
+    </div>
+    <div class="bg-lighter-gray">
+        <div class="categories-tab container py-2 py-md-3 py-lg-2 bg-lighter-gray">
+            <div class=" container d-none d-lg-block py-1 bg-lighter-gray my-1">
+                <ul class="nav nav-pills nav-fill border-bottom-0 m-n1" role="tablist">
+                    <li class="nav-item mx-1 mb-1 mb-md-2 active">
+                        <a href="#category-art" class="nav-link nav-link--art h5 font-body d-flex justify-content-center align-items-center text-dark font-size-base mb-0 p-1 py-md-2" data-toggle="tab" data-target="#category-art" role="tab" aria-selected="false">Art</a>
+                    </li>
+                    <li class="nav-item mx-1 mb-1 mb-md-2">
+                        <a href="#category-belief" class="nav-link nav-link--belief h5 font-body d-flex justify-content-center align-items-center text-dark font-size-base mb-0 p-1 py-md-2" data-toggle="tab" data-target="#category-belief" role="tab" aria-selected="false">Belief</a>
+                    </li>
+                    <li class="nav-item mx-1 mb-1 mb-md-2">
+                        <a href="#category-craftmanship" class="nav-link nav-link--craftmanship h5 font-body d-flex justify-content-center align-items-center text-dark font-size-base mb-0 p-1 py-md-2" data-toggle="tab" data-target="#category-craftmanship" role="tab" aria-selected="false">Craftmanship</a>
+                    </li>
+                    <li class="nav-item mx-1 mb-1 mb-md-2">
+                        <a href="#category-dance" class="nav-link nav-link--dance h5 font-body d-flex justify-content-center align-items-center text-dark font-size-base mb-0 p-1 py-md-2" data-toggle="tab" data-target="#category-dance" role="tab" aria-selected="false">Dance</a>
+                    </li>
+                    <li class="nav-item mx-1 mb-1 mb-md-2">
+                        <a href="#category-entertainment" class="nav-link nav-link--entertainment h5 font-body d-flex justify-content-center align-items-center text-dark font-size-base mb-0 p-1 py-md-2" data-toggle="tab" data-target="#category-entertainment" role="tab" aria-selected="false">Entertainment and recreation</a>
+                    </li>
+                    <li class="nav-item mx-1 mb-1 mb-md-2">
+                        <a href="#category-foodways" class="nav-link nav-link--foodways h5 font-body d-flex justify-content-center align-items-center text-dark font-size-base mb-0 p-1 py-md-2" data-toggle="tab" data-target="#category-foodways" role="tab" aria-selected="false">Foodways</a>
+                    </li>  
+                    <li class="nav-item mx-1 mb-1 mb-md-2">
+                        <a href="#category-music" class="nav-link nav-link--music h5 font-body d-flex justify-content-center align-items-center text-dark font-size-base mb-0 p-1 py-md-2" data-toggle="tab" data-target="#category-music" role="tab" aria-selected="false">Music</a>
+                    </li> 
+                    <li class="nav-item mx-1 mb-1 mb-md-2">
+                        <a href="#category-ritual" class="nav-link nav-link--ritual h5 font-body d-flex justify-content-center align-items-center text-dark font-size-base mb-0 p-1 py-md-2" data-toggle="tab" data-target="#category-ritual" role="tab" aria-selected="false">Rituals</a>
+                    </li> 
+                    <li class="nav-item mx-1 mb-1 mb-md-2">
+                        <a href="#category-verbal" class="nav-link nav-link--verbal h5 font-body d-flex justify-content-center align-items-center text-dark font-size-base mb-0 p-1 py-md-2 active" data-toggle="tab" data-target="#category-verbal" role="tab" aria-selected="true">Verbal arts and literature</a>
+                    </li>                                                                                
+                </ul>
+                <div class="categories-tab-content tab-content pt-1 pt-md-2 bg-verbal">
+                    <div class="tab-pane bg-white" id="category-art" role="tabpanel">
+                        <ul class="categories-cols p-5 css-columns-lg-4 list-unstyled">
+                            {{#Art_filtered}}<li class="w-100 w-lg-auto"><a href="{{.}}" class="nav-link with-prefix">{{.}}</a></li>{{/Art_filtered}}
+                        </ul>
+                    </div>
+                    <div class="tab-pane bg-white" id="category-belief" role="tabpanel">
+                        <ul class="categories-cols p-5 css-columns-lg-4 list-unstyled">
+                            {{#Belief_filtered}}<li class="w-100 w-lg-auto"><a href="{{.}}" class="nav-link with-prefix">{{.}}</a></li>{{/Belief_filtered}}
+                        </ul>
+                    </div>
+                    <div class="tab-pane bg-white" id="category-craftmanship" role="tabpanel">
+                        <ul class="categories-cols p-5 css-columns-lg-4 list-unstyled">
+                            {{#Craftmanship_filtered}}<li class="w-100 w-lg-auto"><a href="{{.}}" class="nav-link with-prefix">{{.}}</a></li>{{/Craftmanship_filtered}}
+                        </ul>
+                    </div>
+                    <div class="tab-pane bg-white" id="category-dance" role="tabpanel">
+                        <ul class="categories-cols p-5 css-columns-lg-4 list-unstyled">
+                            {{#Dance_filtered}}<li class="w-100 w-lg-auto"><a href="{{.}}" class="nav-link with-prefix">{{.}}</a></li>{{/Dance_filtered}}
+                        </ul>
+                    </div>
+                    <div class="tab-pane bg-white" id="category-entertainment" role="tabpanel">
+                        <ul class="categories-cols p-5 css-columns-lg-4 list-unstyled">
+                            {{#Entertainment_filtered}}<li class="w-100 w-lg-auto"><a href="{{.}}" class="nav-link with-prefix">{{.}}</a></li>{{/Entertainment_filtered}}
+                        </ul>
+                    </div>
+                    <div class="tab-pane bg-white" id="category-foodways" role="tabpanel">
+                        <ul class="categories-cols p-5 css-columns-lg-4 list-unstyled">
+                            {{#Foodways_filtered}}<li class="w-100 w-lg-auto"><a href="{{.}}" class="nav-link with-prefix">{{.}}</a></li>{{/Foodways_filtered}}
+                        </ul>
+                    </div>
+                    <div class="tab-pane bg-white" id="category-music" role="tabpanel">
+                        <ul class="categories-cols p-5 css-columns-lg-4 list-unstyled">
+                            {{#Music_filtered}}<li class="w-100 w-lg-auto"><a href="{{.}}" class="nav-link with-prefix">{{.}}</a></li>{{/Music_filtered}}
+                        </ul>
+                    </div>
+                    <div class="tab-pane bg-white" id="category-ritual" role="tabpanel">
+                        <ul class="categories-cols p-5 css-columns-lg-4 list-unstyled">
+                            {{#Ritual_filtered}}<li class="w-100 w-lg-auto"><a href="{{.}}" class="nav-link with-prefix">{{.}}</a></li>{{/Ritual_filtered}}
+                        </ul>
+                    </div>
+                    <div class="tab-pane bg-white active" id="category-verbal" role="tabpanel">
+                        <ul class="categories-cols p-5 css-columns-lg-4 list-unstyled">
+                            {{#Verbal_filtered}}<li class="w-100 w-lg-auto"><a href="{{.}}" class="nav-link with-prefix">{{.}}</a></li>{{/Verbal_filtered}}
+                        </ul>
+                    </div>                                                                             
+                </div>
+        
+            </div>
+            <div class="d-block py-0 py-lg-5 d-lg-none">
+                <select class="select-region custom-select d-md-none mb-2" aria-label="Default select example">
+                    <option selected="">Filter by Regions/States</option>
+                    <option value="country-region.html">Andaluacia</option>
+                    <option value="country-region.html">Two</option>
+                    <option value="country-region.html">Three</option>
+                </select><form class="categories-form">
+                    <select class="select-categories custom-select" aria-label="Default select example">
+                        <option value="" disabled="" selected="">Select a category</option>
+                    <option value="#category-art">Art</option><option value="#category-belief">Belief</option><option value="#category-craftmanship">Craftmanship</option><option value="#category-dance">Dance</option><option value="#category-entertainment">Entertainment and recreation</option><option value="#category-foodways">Foodways</option><option value="#category-music">Music</option><option value="#category-ritual">Rituals</option><option value="#category-verbal">Verbal arts and literature</option></select>
+                </form>
+                <ul class="categories-select-content p-1 mt-2 mt-md-3 bg-white list-unstyled">
+                    <div class="py-5 text-center text-gray h4 font-body">Select a category<br> from the upper panel</div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
