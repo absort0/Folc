@@ -60,6 +60,18 @@ class Folc extends SkinMustache {
 
 
         if ( $data['country_page'] ) {
+            $regions = [];
+            $res = $dbr->newSelectQueryBuilder()
+                ->select( '*' )
+                ->from( 'cargo__' . 'Country' )
+                ->where(['Country__full LIKE "%' . $wgTitle->getFullText() . '%"'] )
+                ->caller( __METHOD__ )
+                ->fetchResultSet();
+            foreach( $res as $row ) {
+                if ( !empty( $row->Region__full ) ) {
+                    $data['regions'] = explode( ',', $row->Region__full );
+                }
+            }
             foreach( $categories as $category ){
 
                  $category_pages = $dbr->newSelectQueryBuilder()       
