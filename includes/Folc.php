@@ -64,7 +64,7 @@ class Folc extends SkinMustache {
             $res = $dbr->newSelectQueryBuilder()
                 ->select( '*' )
                 ->from( 'cargo__' . 'Country' )
-                ->where(['Country__full LIKE "%' . $wgTitle->getFullText() . '%"'] )
+                ->where(['Country LIKE "%' . $wgTitle->getFullText() . '%"'] )
                 ->caller( __METHOD__ )
                 ->fetchResultSet();
             foreach( $res as $row ) {
