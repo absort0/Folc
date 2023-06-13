@@ -64,7 +64,7 @@ class Folc extends SkinMustache {
                 $data['country_page'] = true;
                 $data['regions'] = $regions;
             }
-            if ( in_array( $wgTitle->getFullText(), $regions ) {
+            if ( in_array( $wgTitle->getFullText(), $regions ) ) {
                 $data['region_page'] = true;
                 $data['regions'] = $regions;
                 $country = $country->Country;
