@@ -75,7 +75,6 @@ class Folc extends SkinMustache {
 
         if ( $data['region_page'] ) {
             foreach( $categories as $category ){
-
                  $category_pages = $dbr->newSelectQueryBuilder()       
                     ->select( '*' )
                     ->from( 'cargo__' . 'Articles' )
@@ -87,7 +86,7 @@ class Folc extends SkinMustache {
                     $data[$category . '_filtered'][] = \Title::newFromID( $page->_pageID )->getFullText();
                 }
             }
-        } if ( $data['country_page'] ) {
+        } else if ( $data['country_page'] ) {
             foreach( $categories as $category ){
 
                  $category_pages = $dbr->newSelectQueryBuilder()       
