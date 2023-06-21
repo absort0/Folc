@@ -1,91 +1,89 @@
-<div class="main-content">
-    <div class="bg-light-gray">
-        <div class="container">
-            <div class="article-tab row d-flex">
-                <div class="col-xl-5 align-self-center text-uppercase text-gray d-none d-xl-block"><span>Read</span> Mode</div> 
-                <div class="col-xl-4 align-self-end">
-                    <ul class="nav  mt-1 mt-md-2 nav-pills nav-fill border-bottom-0 active" id="countries-tab" role="tablist">
-                        <li class="nav-item {{read_tab}}">
-                            <a href="/{{pagetitle}}" class="nav-link text-dark-gray py-1 py-md-2 {{read_tab}}" data-toggle="" data-target="#read" role="tab" aria-selected="true">Read</a>
-                        </li>
-                        <li class="nav-item {{edit_tab}}">
-                            <a href="/{{pagetitle}}?action=formedit" class="nav-link text-dark-gray py-1 py-md-2 {{edit_tab}}" data-toggle="" data-target="" role="tab" aria-selected="false">Edit</a>
-                        </li>
-                        <li class="nav-item {{discussion_tab}}">
-                            <a href="/Talk:{{pagetitle}}" class="nav-link text-dark-gray py-1 py-md-2 {{discussion_tab}}" data-toggle="" data-target="" role="tab" aria-selected="false">Discussion</a>
-                        </li>
-                        <li class="nav-item {{history_tab}}">
-                            <a href="/{{pagetitle}}?action=history" class="nav-link text-dark-gray py-1 py-md-2 {{history_tab}}" data-toggle="" data-target="" role="tab" aria-selected="false">History</a>
-                        </li>
-                    </ul>
-                </div> 
-            </div>
+<div class="bg-light-gray">
+    <div class="container">
+        <div class="article-tab row d-flex">
+            <div class="col-xl-5 align-self-center text-uppercase text-gray d-none d-xl-block"><span>Read</span> Mode</div> 
+            <div class="col-xl-4 align-self-end">
+                <ul class="nav  mt-1 mt-md-2 nav-pills nav-fill border-bottom-0 active" id="countries-tab" role="tablist">
+                    <li class="nav-item {{read_tab}}">
+                        <a href="/{{pagetitle}}" class="nav-link text-dark-gray py-1 py-md-2 {{read_tab}}" data-toggle="" data-target="#read" role="tab" aria-selected="true">Read</a>
+                    </li>
+                    <li class="nav-item {{edit_tab}}">
+                        <a href="/{{pagetitle}}?action=formedit" class="nav-link text-dark-gray py-1 py-md-2 {{edit_tab}}" data-toggle="" data-target="" role="tab" aria-selected="false">Edit</a>
+                    </li>
+                    <li class="nav-item {{discussion_tab}}">
+                        <a href="/Talk:{{pagetitle}}" class="nav-link text-dark-gray py-1 py-md-2 {{discussion_tab}}" data-toggle="" data-target="" role="tab" aria-selected="false">Discussion</a>
+                    </li>
+                    <li class="nav-item {{history_tab}}">
+                        <a href="/{{pagetitle}}?action=history" class="nav-link text-dark-gray py-1 py-md-2 {{history_tab}}" data-toggle="" data-target="" role="tab" aria-selected="false">History</a>
+                    </li>
+                </ul>
+            </div> 
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="{{#read_tab}}col-lg-8{{/read_tab}} order-2 order-md-1">
-                <div class="tab-content pt-3 pr-0 pr-lg-4">
-                    <div class="tab-pane bg-white show {{read_tab}}" id="read" role="tabpanel">
-                        <div class="tab-pane bg-white" id="read" role="tabpanel">
-                            <h2>{{pagetitle}}</h2>
-                            {{{html-body-content}}}
-                        </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="{{#read_tab}}col-lg-8{{/read_tab}} order-2 order-md-1">
+            <div class="tab-content pt-3 pr-0 pr-lg-4">
+                <div class="tab-pane bg-white show {{read_tab}}" id="read" role="tabpanel">
+                    <div class="tab-pane bg-white" id="read" role="tabpanel">
+                        <h2>{{pagetitle}}</h2>
+                        {{{html-body-content}}}
                     </div>
-                    <div class="tab-pane bg-white {{edit_tab}}" id="edit" role="tabpanel">
-                        <div class="tab-pane bg-white" id="edit" role="tabpanel">
-                            {{{html-body-content}}}
-                        </div>
+                </div>
+                <div class="tab-pane bg-white {{edit_tab}}" id="edit" role="tabpanel">
+                    <div class="tab-pane bg-white" id="edit" role="tabpanel">
+                        {{{html-body-content}}}
                     </div>
-                    <div class="tab-pane bg-white" id="discussion" role="tabpanel">
-                        <div class="tab-pane show active bg-white" id="discussion" role="tabpanel">
-                            {{{html-body-content}}}
-                        </div>
+                </div>
+                <div class="tab-pane bg-white" id="discussion" role="tabpanel">
+                    <div class="tab-pane show active bg-white" id="discussion" role="tabpanel">
+                        {{{html-body-content}}}
                     </div>
-                    <div class="tab-pane bg-white {{history_tab}}" id="history" role="tabpanel">
-                        <div class="tab-pane bg-white" id="history" role="tabpanel">
-                            {{{html-body-content}}}
-                        </div>
+                </div>
+                <div class="tab-pane bg-white {{history_tab}}" id="history" role="tabpanel">
+                    <div class="tab-pane bg-white" id="history" role="tabpanel">
+                        {{{html-body-content}}}
                     </div>
                 </div>
             </div>
-            {{#read_tab}}
-                <div class="col-lg-4 order-1 order-md-2">
-                    <div class="bg-lighter-gray mx-n1 mx-md-0">
-                        <figure class="figure">
-                            <img src="{{img}}" class="figure-img img-fluid mb-0" alt="">
-                            <figcaption class="figure-caption text-left bg-light-gray px-1 px-md-3 py-1">{{img-caption}}</figcaption>
-                        </figure>
-                        <div class="px-1 p-md-3">
-                            <div><span class="text-gray">Nation:</span> {{#countries}}<a href="{{.}}">{{.}}</a>{{^-last}}, {{/-last}}{{/countries}} </div>
-                            <div><span class="text-gray">Region:</span> {{#regions}}<a href="{{.}}">{{.}}</a>{{^-last}}, {{/-last}}{{/regions}}</div>
-                        </div>
-                        <hr>
-                        <div class="px-1 p-md-3">
-                            <div class="text-gray text-uppercase pb-1">Categories</div>
-                            <div class="categories categories--list">
-                                {{#subjects}}
-                                    <a href="/{{subject_name}}" class="subject-card bg-{{subject_name_lower}} subject-card--small mb-1 h4  subject-card--minimal-mobile d-flex align-items-center justify-content-end justify-content-lg-center">
-                                        <span class="font-heading text-white justify-content-center pl-md-5 ml-md-4  pl-1 mb-0 category-text">{{subject_name}}</span>
-                                    </a>
-                                {{/subjects}}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="px-1 p-md-3">
-                            <div class="text-gray text-uppercase pb-1">Sustainable development goals</div>
-                            {{#sdg}}<a class="a-link with-prefix" href="/{{.}}">{{.}}</a>{{/sdg}}
-                        </div>
-                        <hr>
-                        <div class="px-1 p-md-3">
-                            <div class="text-gray text-uppercase pb-1">Tags</div>
-                            {{#tags}}<a href="#" class="btn btn-outline-secondary text-uppercase px-3 text-primary">{{.}}</a>{{/tags}}
-                        </div>
-                        <hr class="mb-lg-5 pb-lg-5">
-                    </div>
-                </div>
-            {{/read_tab}}
         </div>
+        {{#read_tab}}
+            <div class="col-lg-4 order-1 order-md-2">
+                <div class="bg-lighter-gray mx-n1 mx-md-0">
+                    <figure class="figure">
+                        <img src="{{img}}" class="figure-img img-fluid mb-0" alt="">
+                        <figcaption class="figure-caption text-left bg-light-gray px-1 px-md-3 py-1">{{img-caption}}</figcaption>
+                    </figure>
+                    <div class="px-1 p-md-3">
+                        <div><span class="text-gray">Nation:</span> {{#countries}}<a href="{{.}}">{{.}}</a>{{^-last}}, {{/-last}}{{/countries}} </div>
+                        <div><span class="text-gray">Region:</span> {{#regions}}<a href="{{.}}">{{.}}</a>{{^-last}}, {{/-last}}{{/regions}}</div>
+                    </div>
+                    <hr>
+                    <div class="px-1 p-md-3">
+                        <div class="text-gray text-uppercase pb-1">Categories</div>
+                        <div class="categories categories--list">
+                            {{#subjects}}
+                                <a href="/{{subject_name}}" class="subject-card bg-{{subject_name_lower}} subject-card--small mb-1 h4  subject-card--minimal-mobile d-flex align-items-center justify-content-end justify-content-lg-center">
+                                    <span class="font-heading text-white justify-content-center pl-md-5 ml-md-4  pl-1 mb-0 category-text">{{subject_name}}</span>
+                                </a>
+                            {{/subjects}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="px-1 p-md-3">
+                        <div class="text-gray text-uppercase pb-1">Sustainable development goals</div>
+                        {{#sdg}}<a class="a-link with-prefix" href="/{{.}}">{{.}}</a>{{/sdg}}
+                    </div>
+                    <hr>
+                    <div class="px-1 p-md-3">
+                        <div class="text-gray text-uppercase pb-1">Tags</div>
+                        {{#tags}}<a href="#" class="btn btn-outline-secondary text-uppercase px-3 text-primary">{{.}}</a>{{/tags}}
+                    </div>
+                    <hr class="mb-lg-5 pb-lg-5">
+                </div>
+            </div>
+        {{/read_tab}}
     </div>
 </div>
 
