@@ -94,9 +94,7 @@
             <div class="d-block py-0 py-lg-5 d-lg-none">
                 <select class="select-region custom-select d-md-none mb-2" aria-label="Default select example">
                     <option selected="">Filter by Regions/States</option>
-                    <option value="country-region.html">Andaluacia</option>
-                    <option value="country-region.html">Two</option>
-                    <option value="country-region.html">Three</option>
+                    {{#regions}}<option value="{{.}}">{{.}}</option>{{/regions}}
                 </select><form class="categories-form">
                     <select class="select-categories custom-select" aria-label="Default select example">
                         <option value="" disabled="" selected="">Select a category</option>
