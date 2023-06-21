@@ -81,8 +81,8 @@
     </div>
     <div class="footer-bottom bg-dark-gray py-2 py-md-4">
         <div class="container">
-            <nav class="nav-bar d-flex">
-                <ul class="navbar-nav navbar-expand-lg mr-auto">
+            <nav class="nav-bar d-flex flex-column flex-md-row">
+                <ul class="navbar-nav navbar-expand-lg mr-auto order-2 order-md-1">
                     <li class="nav-item mr-lg-1 active">
                         <a class="nav-link a-link with-prefix" href="#">Privacy policy</a>
                     </li>
@@ -103,7 +103,7 @@
                     </li>   
                 </ul>
                 {{#data-logos}}
-                    {{#1x}}<a class="navbar-brand d-none d-md-block mr-0" href="/"><img src="{{.}}"></a>{{/1x}}
+                    {{#1x}}<a class="navbar-brand mr-0 order-1 order-md-2 mb-1 mb-md-0" href="/"><img src="{{.}}"></a>{{/1x}}
                 {{/data-logos}}
             </nav>
         </div>
