@@ -64,7 +64,7 @@
                         <div class="text-gray text-uppercase pb-1">Categories</div>
                         <div class="categories categories--list">
                             {{#subjects}}
-                                <a href="/{{subject_name}}" class="subject-card bg-{{subject_name_lower}} subject-card--small mb-1 h4  subject-card--minimal-mobile d-flex align-items-center justify-content-end justify-content-lg-center">
+                                <a href="/{{subject_name}}" class="subject-card bg-{{subject_name_lower}} subject-card--small mb-1 h4  d-flex align-items-center justify-content-end justify-content-lg-center">
                                     <span class="font-heading text-white justify-content-center pl-md-5 ml-md-4  pl-1 mb-0 category-text">{{subject_name}}</span>
                                 </a>
                             {{/subjects}}
@@ -73,7 +73,7 @@
                     <hr>
                     <div class="px-1 p-md-3">
                         <div class="text-gray text-uppercase pb-1">Sustainable development goals</div>
-                        {{#sdg}}<a class="a-link with-prefix" href="/{{.}}">{{.}}</a>{{/sdg}}
+                        {{#sdg}}<a class="a-link with-prefix d-block" href="/{{.}}">{{.}}</a>{{/sdg}}
                     </div>
                     <hr>
                     <div class="px-1 p-md-3">
