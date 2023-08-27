@@ -158,7 +158,7 @@ class Folc extends SkinMustache {
                     $data['regions'] = explode( ',', $row->Region__full );
                 }
                 $data['sdg'] = explode( ',', $row->SDG__full );
-                $data['description'] = explode( ',', $row->Description );
+                $data['description'] = $row->Description;
                 if ( !empty( $row->File ) ) {
                     $file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $row->File );
                     $data['img'] = $file->getFullUrl();
