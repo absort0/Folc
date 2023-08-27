@@ -1,8 +1,8 @@
-<div class="bg-{{pagetitle_smallcase}} category-header category-header--dance text-center d-flex flex-column align-items-center justify-content-center">
+<div class="bg-{{pagetitle_smallcase}} category-header category-header--{{pagetitle_smallcase}} text-center d-flex flex-column align-items-center justify-content-center">
     <h1 class="text-white">{{pagetitle}}</h1>
 </div>
 <div class="bg-lighter-gray pt-1 pb-md-3">
-    <div class="countries-multi-level-tabs countries-tab countries-tab--multi-level container">
+    <div class="countries-multi-level-tabs countries-tab countries-tab--{{pagetitle_smallcase}} countries-tab--multi-level container">
     
         <div class="d-none d-lg-block py-2 bg-lighter-gray my-3">
             <ul class="main-tabs nav nav-pills nav-fill border-bottom-0 mx-n1 mx-md-n1" role="tablist">
@@ -22,7 +22,7 @@
                     <a href="#countries-oceania-multi" class="nav-link text-dark h4 font-body mb-0 p-1 p-md-2" data-toggle="tab" data-target="#countries-oceania-multi" role="tab">Oceania</a>
                 </li>
             </ul>
-            <div class="tab-content pt-1 pt-md-2 bg-dance" id="countries-tabContent">
+            <div class="tab-content pt-1 pt-md-2 bg-{{pagetitle_smallcase}}" id="countries-tabContent">
                 <div class="tab-pane bg-white active" id="countries-africa-multi" role="tabpanel">
                     <div class="p-5 navbar d-block">
                         <ul class="countries-cols css-columns-lg-4 list-unstyled">
