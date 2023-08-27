@@ -10,9 +10,11 @@
                     <li class="nav-item {{edit_tab}}">
                         <a href="/{{pagetitle}}?action=formedit" class="nav-link text-dark-gray py-1 py-md-2 {{edit_tab}}" data-toggle="" data-target="" role="tab" aria-selected="false">Edit</a>
                     </li>
+                    <!--
                     <li class="nav-item {{discussion_tab}}">
                         <a href="/Talk:{{pagetitle}}" class="nav-link text-dark-gray py-1 py-md-2 {{discussion_tab}}" data-toggle="" data-target="" role="tab" aria-selected="false">Discussion</a>
                     </li>
+                    -->
                     <li class="nav-item {{history_tab}}">
                         <a href="/{{pagetitle}}?action=history" class="nav-link text-dark-gray py-1 py-md-2 {{history_tab}}" data-toggle="" data-target="" role="tab" aria-selected="false">History</a>
                     </li>
@@ -21,36 +23,19 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="{{#read_tab}}col-lg-8{{/read_tab}} order-2 order-md-1">
-            <div class="tab-content pt-3 pr-0 pr-lg-4">
-                <div class="tab-pane bg-white show {{read_tab}}" id="read" role="tabpanel">
-                    <div class="tab-pane bg-white" id="read" role="tabpanel">
-                        <h2>{{pagetitle}}</h2>
-                        {{{html-body-content}}}
-                    </div>
-                </div>
-                <div class="tab-pane bg-white {{edit_tab}}" id="edit" role="tabpanel">
-                    <div class="tab-pane bg-white" id="edit" role="tabpanel">
-                        {{{html-body-content}}}
-                    </div>
-                </div>
-                <div class="tab-pane bg-white" id="discussion" role="tabpanel">
-                    <div class="tab-pane show active bg-white" id="discussion" role="tabpanel">
-                        {{{html-body-content}}}
-                    </div>
-                </div>
-                <div class="tab-pane bg-white {{history_tab}}" id="history" role="tabpanel">
-                    <div class="tab-pane bg-white" id="history" role="tabpanel">
-                        {{{html-body-content}}}
-                    </div>
-                </div>
+
+<div class="container tab-content">
+    <div class="tab-pane bg-white active" id="tab-read" role="tabpanel">
+        <article class="article">
+            <div class="article__intro pt-2 pt-md-3 pr-0 pr-lg-4">
+                <h1 class="h2">{{pagetitle}}</h1>
+                <p class="mb-1">{{description}}</p>
             </div>
-        </div>
-        {{#read_tab}}
-            <div class="col-lg-4 order-1 order-md-2">
-                <div class="bg-lighter-gray mx-n1 mx-md-0">
+            <div class="article__content border-bottom-lg pt-0 pt-md-3 pr-0 pr-lg-4">
+                {{{html-body-content}}}
+            </div>
+            <aside class="article__sidebar">
+                <div class="bg-lighter-gray mx-n1 mx-md-0 pb-lg-5 mb-1 mb-lg-0 ml-lg-2">
                     <figure class="figure">
                         <img src="{{img}}" class="figure-img img-fluid mb-0" alt="">
                         <figcaption class="figure-caption text-left bg-light-gray px-1 px-md-3 py-1">{{img-caption}}</figcaption>
@@ -76,14 +61,24 @@
                         {{#sdg}}<a class="a-link with-prefix d-block" href="/{{.}}">{{.}}</a>{{/sdg}}
                     </div>
                     <hr>
-                    <div class="px-1 p-md-3">
+                    <div class="px-1 p-md-3 pb-3">
                         <div class="text-gray text-uppercase pb-1">Tags</div>
                         {{#tags}}<a href="#" class="btn btn-outline-secondary text-uppercase px-3 text-primary">{{.}}</a>{{/tags}}
                     </div>
-                    <hr class="mb-lg-5 pb-lg-5">
+                    <hr class="pb-lg-5 mb-0 d-none d-lg-block">
+                
                 </div>
-            </div>
-        {{/read_tab}}
+            </aside>                
+        </article>
+    </div>
+
+    <div class="tab-pane bg-white" id="tab-edit" role="tabpanel">
+        Edit 
+    </div>
+    <div class="tab-pane bg-white" id="tab-discussion" role="tabpanel">
+        Discussion
+    </div>
+    <div class="tab-pane bg-white" id="tab-history" role="tabpanel">
+        History
     </div>
 </div>
-

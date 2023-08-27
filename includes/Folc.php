@@ -15,12 +15,16 @@ class Folc extends SkinMustache {
     public function getTemplateData() {
         global $wgTitle, $wgRequest;
 
+
+        $this_page_categories = $wgTitle->getParentCategories();
+
         $data = parent::getTemplateData();
         $data['pagetitle'] = $wgTitle->getFullText(); // or $this->msg('msg-key')->parse();
         $data['pagetitle_smallcase'] = strtolower( $wgTitle->getFullText() );
 
         $data['country_page'] = false;
         $data['region_page'] = false;
+        $data['sdg_page'] = false;
         $country_name = "";
 
         if ( $wgRequest->getText( 'action' ) == "formedit" ) {
@@ -115,6 +119,22 @@ class Folc extends SkinMustache {
                 $data[$country->Continent . '_filtered'][] = [ 'country' => $country->Country, 'count' => $country_pages->numRows() ];
             }
 
+        } else if ( array_key_exists( "Category:SDG", $this_page_categories ) ) {
+           $data['sdg_page'] = true;
+           $data['sdg'] = $wgTitle->getFullText();
+            foreach( $categories as $category ){
+
+                 $category_pages = $dbr->newSelectQueryBuilder()       
+                    ->select( '*' )
+                    ->from( 'cargo__' . 'Articles' )
+                    ->where(['SDG__full LIKE "%' . $wgTitle->getFullText() . '%"', 'Subject__full LIKE "%' . $category . '%"'] )
+                    ->caller( __METHOD__ )       
+                    ->fetchResultSet();
+
+                foreach( $category_pages as $page ) {
+                    $data[$category . '_filtered'][] = \Title::newFromID( $page->_pageID )->getFullText();
+                }
+            }
         } else if ( !$wgTitle->isMainPage() && in_array( $wgTitle->getNamespace(), [ 0, 1 ] ) ) {
             $data['pagetitle'] = $wgTitle->getText(); // or $this->msg('msg-key')->parse();
 
@@ -138,6 +158,7 @@ class Folc extends SkinMustache {
                     $data['regions'] = explode( ',', $row->Region__full );
                 }
                 $data['sdg'] = explode( ',', $row->SDG__full );
+                $data['description'] = explode( ',', $row->Description );
                 if ( !empty( $row->File ) ) {
                     $file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $row->File );
                     $data['img'] = $file->getFullUrl();
