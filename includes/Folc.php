@@ -109,14 +109,19 @@ class Folc extends SkinMustache {
 
             foreach( $countries as $country ){
 
-                 $country_pages = $dbr->newSelectQueryBuilder()       
+                $country_pages = $dbr->newSelectQueryBuilder()       
                     ->select( '*' )
                     ->from( 'cargo__' . 'Articles' )
                     ->where(['Country__full LIKE "%' . $country->Country . '%"', 'Subject__full LIKE "%' . $wgTitle->getFullText() . '%"'] )
                     ->caller( __METHOD__ )       
                     ->fetchResultSet();
 
-                $data[$country->Continent . '_filtered'][] = [ 'country' => $country->Country, 'count' => $country_pages->numRows() ];
+                $page_list = [];
+                foreach( $country_pages as $page ) {
+                    $page_list[] = \Title::newFromID( $page->_pageID )->getFullText();
+                }
+
+                $data[$country->Continent . '_filtered'][] = [ 'country' => $country->Country, 'count' => $country_pages->numRows(), 'list' => $page_list ];
             }
 
         } else if ( array_key_exists( "Category:SDG", $this_page_categories ) ) {

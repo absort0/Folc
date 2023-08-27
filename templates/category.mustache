@@ -26,14 +26,28 @@
                 <div class="tab-pane bg-white active" id="countries-africa-multi" role="tabpanel">
                     <div class="p-5 navbar d-block">
                         <ul class="countries-cols css-columns-lg-4 list-unstyled">
-                            {{#Africa_filtered}}<li><a href="{{country}}" class="nav-link">{{country}} ({{count}})</a></li>{{/Africa_filtered}}
+                            {{#Africa_filtered}}<li>
+                                <a href="#" class="nav-link a-link d-inline-block" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{country}} ({{count}})</a>
+                                <div class="dropdown-menu position-absolute w-100 pt-0 ml-n2 show">
+                                    <div class="dropdown-header d-flex align-items-center bg-primary text-white">
+                                        <h3 class="h2 d-none d-md-block">{{country}}</h3>
+                                        <a href="/{{country}}" class="a-link with-prefix text-white ml-auto h5 font-body mb-0 ">Go to {{country}} ({{count}}) </a>
+                                        <div class="dropdown-close d-none bg-white text-primary rounded-circle ml-5 d-md-flex justify-content-center align-items-center">×</div>
+                                    </div>
+                                    <div class="row p-2 py-3">
+                                        <div class="col-12 col-md-12">{{#list}}
+                                            <a class="nav-link with-prefix " href="/{{.}}">{{.}}</a>{{/list}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>{{/Africa_filtered}}
                         </ul>
                     </div>
                 </div>
                 <div class="tab-pane bg-white" id="countries-asia-multi" role="tabpanel">
                     <div class="p-5 navbar d-block">
                         <ul class="countries-cols css-columns-lg-4 list-unstyled">
-                            {{#Asia_filtered}}<li><a href="{{country}}" class="nav-link">{{country}} ({{count}})</a></li>{{/Asia_filtered}}
+                            {{#Asia_filtered}}<li><a href="#" class="nav-link a-link d-inline-block" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{country}} ({{count}})</a></li>{{/Asia_filtered}}
                         </ul>
                     </div>
                 </div>
